@@ -170,7 +170,7 @@ module ActiveMerchant
           # Returns delivery dates
           root_node << XmlNode.new('ReturnTransitAndCommit', true)
           # Returns saturday delivery shipping options when available
-          root_node << XmlNode.new('VariableOptions', 'SATURDAY_DELIVERY')
+      #    root_node << XmlNode.new('VariableOptions', 'SATURDAY_DELIVERY')
           
           root_node << XmlNode.new('RequestedShipment') do |rs|
             rs << XmlNode.new('ShipTimestamp', ship_timestamp(options[:turn_around_time]))
@@ -183,7 +183,7 @@ module ActiveMerchant
               rs << build_location_node('Origin', origin)
             end
             
-            rs << XmlNode.new('RateRequestTypes', 'ACCOUNT')
+            rs << XmlNode.new('RateRequestTypes', 'LIST')
             rs << XmlNode.new('PackageCount', packages.size)
             packages.each do |pkg|
               rs << XmlNode.new('RequestedPackages') do |rps|
